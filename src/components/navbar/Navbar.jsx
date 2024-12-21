@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
-// import logo from '../../assets/logo.svg';
-// import Library from '../library/Library';
+import { Link } from 'react-router-dom'; // Import Link for routing
 import './navbar.css';
 
 const Navbar = () => {
@@ -10,9 +9,7 @@ const Navbar = () => {
   const aiProducts = [
     { name: 'ChatGPT Clone', url: 'https://stately-cannoli-dccec3.netlify.app/' },
     { name: 'AI Summarizer', url: 'https://your-ai-summarizer.netlify.app' }
-    // Add more products as needed
   ];
-
 
   return (
     <div className="gpt3__navbar">
@@ -43,8 +40,11 @@ const Navbar = () => {
         </div>
       </div>
       <div className="gpt3__navbar-sign">
-        <p>Sign in</p>
-        <button type="button">Sign up</button>
+        {/* Use Link for routing */}
+        <p><Link to="/login">Sign in</Link></p>
+        <button type="button">
+          <Link to="/signup">Sign up</Link>
+        </button>
       </div>
       <div className="gpt3__navbar-menu">
         {toggleMenu
@@ -57,12 +57,15 @@ const Navbar = () => {
               <p><a href="#wgpt3">What is GPT3?</a></p>
               <p><a href="#possibility">Open AI</a></p>
               <p><a href="#features">Case Studies</a></p>
-              <p><a href="#ilbrary">AI Products</a></p>
+              <p><a href="#library">AI Products</a></p>
               <p><a href="#blog">AI Blog</a></p>
             </div>
             <div className="gpt3__navbar-menu_container-links-sign">
-              <p>Sign in</p>
-              <button type="button">Sign up</button>
+              {/* Updated for routing */}
+              <p><Link to="/login">Sign in</Link></p>
+              <button type="button">
+                <Link to="/signup">Sign up</Link>
+              </button>
             </div>
           </div>
         )}
