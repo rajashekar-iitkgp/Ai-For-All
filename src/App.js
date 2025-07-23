@@ -29,7 +29,7 @@ function App() {
         <div className='gradient__bg'>
           <Navbar />
         </div>
-        <Routes>
+        <Routes basename="/Ai-For-All">
           <Route path="/" element={<HomePage />} />
           <Route path="/features" element={<Features />} />
           <Route path="/possibility" element={<Possibility />} />
