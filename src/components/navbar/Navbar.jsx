@@ -18,14 +18,14 @@ const Navbar = () => {
           {/* <img src={logo} alt = "logo"/> */}
         </div>
         <div className="gpt3__navbar-links_container">
-          <p><a href="#home">Home</a></p>
-          <p><a href="#wgpt3">What is GPT3?</a></p>
-          <p><a href="#possibilities">Open AI GPT-4</a></p>
-          <p><a href="#features">Case Studies</a></p>
-          
-          {/* Dropdown menu for AI Products */}
+          <p><Link to="/">Home</Link></p>
+          <p><Link to="/what-gpt3">What is GPT3?</Link></p>
+          <p><Link to="/possibility">Open AI GPT-4</Link></p>
+          <p><Link to="/features">Case Studies</Link></p>
+
+          {/* Dropdown stays the same since it's external */}
           <div className="dropdown">
-            <p><a href="#library">AI Products</a></p>
+            <p><span>AI Products</span></p>
             <div className="dropdown-content">
               {aiProducts.map((product, index) => (
                 <a key={index} href={product.url} target="_blank" rel="noopener noreferrer">
@@ -34,9 +34,7 @@ const Navbar = () => {
               ))}
             </div>
           </div>
-          {/* End of dropdown */}
-
-          <p><a href="#blog">Blog</a></p>
+          <p><Link to="/blog">Blog</Link></p>
         </div>
       </div>
       <div className="gpt3__navbar-sign">
@@ -53,13 +51,14 @@ const Navbar = () => {
         {toggleMenu && (
           <div className="gpt3__navbar-menu_container scale-up-center">
             <div className="gpt3__navbar-menu_container-links">
-              <p><a href="#home">Home</a></p>
-              <p><a href="#wgpt3">What is GPT3?</a></p>
-              <p><a href="#possibility">Open AI</a></p>
-              <p><a href="#features">Case Studies</a></p>
-              <p><a href="#library">AI Products</a></p>
-              <p><a href="#blog">AI Blog</a></p>
+              <p><Link to="/">Home</Link></p>
+              <p><Link to="/what-gpt3">What is GPT3?</Link></p>
+              <p><Link to="/possibility">Open AI GPT-4</Link></p>
+              <p><Link to="/features">Case Studies</Link></p>
+              <p><span>AI Products</span></p>
+              <p><Link to="/blog">Blog</Link></p>
             </div>
+
             <div className="gpt3__navbar-menu_container-links-sign">
               {/* Updated for routing */}
               <p><Link to="/login">Sign in</Link></p>
