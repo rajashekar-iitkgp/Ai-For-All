@@ -8,7 +8,7 @@ const Navbar = () => {
 
   const aiProducts = [
     { name: 'ChatGPT Clone', url: 'https://stately-cannoli-dccec3.netlify.app/' },
-    { name: 'AI Summarizer', url: 'https://your-ai-summarizer.netlify.app' }
+    { name: 'AI Summarizer', url: 'https://peaceful-brioche-9bddb1.netlify.app/' }
   ];
 
   return (
