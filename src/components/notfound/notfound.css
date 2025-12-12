@@ -1,0 +1,48 @@
+.gpt3__notfound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+}
+
+.gpt3__notfound-content h1 {
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 120px;
+    line-height: 120px;
+    letter-spacing: -0.04em;
+    margin: 0;
+}
+
+.gpt3__notfound-content h2 {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 45px;
+    color: #fff;
+    margin-top: 2rem;
+}
+
+.gpt3__notfound-content p {
+    font-family: var(--font-family);
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--color-text);
+    margin: 1rem 0 2rem;
+}
+
+.gpt3__notfound-btn a {
+    background: #FF4820;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

@@ -3,12 +3,25 @@ import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom'; // Import Link for routing
 import './navbar.css';
 
+import { useAuth } from '../../context/AuthContext.jsx';
+import { useNavigate } from 'react-router-dom';
+
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    setToggleMenu(false);
+    navigate('/');
+  };
 
   const aiProducts = [
     { name: 'ChatGPT Clone', url: 'https://stately-cannoli-dccec3.netlify.app/' },
-    { name: 'AI Summarizer', url: 'https://peaceful-brioche-9bddb1.netlify.app/' }
+    { name: 'AI Summarizer', url: 'https://peaceful-brioche-9bddb1.netlify.app/' },
+    { name: 'AI Image Generator' },
+    { name: "image identifier" }
   ];
 
   return (
@@ -28,9 +41,15 @@ const Navbar = () => {
             <p><span>AI Products</span></p>
             <div className="dropdown-content">
               {aiProducts.map((product, index) => (
-                <a key={index} href={product.url} target="_blank" rel="noopener noreferrer">
-                  {product.name}
-                </a>
+                product.url ? (
+                  <a key={index} href={product.url} target="_blank" rel="noopener noreferrer">
+                    {product.name}
+                  </a>
+                ) : (
+                  <Link key={index} to="/not-found">
+                    {product.name}
+                  </Link>
+                )
               ))}
             </div>
           </div>
@@ -38,11 +57,19 @@ const Navbar = () => {
         </div>
       </div>
       <div className="gpt3__navbar-sign">
-        {/* Use Link for routing */}
-        <p><Link to="/login">Sign in</Link></p>
-        <button type="button">
-          <Link to="/signup">Sign up</Link>
-        </button>
+        {user ? (
+          <div className="gpt3__navbar-user">
+            <p>Hello, {user.user_name || 'User'}</p>
+            <button type="button" onClick={handleLogout}>Logout</button>
+          </div>
+        ) : (
+          <>
+            <p><Link to="/login">Sign in</Link></p>
+            <button type="button">
+              <Link to="/signup">Sign up</Link>
+            </button>
+          </>
+        )}
       </div>
       <div className="gpt3__navbar-menu">
         {toggleMenu
@@ -60,11 +87,19 @@ const Navbar = () => {
             </div>
 
             <div className="gpt3__navbar-menu_container-links-sign">
-              {/* Updated for routing */}
-              <p><Link to="/login">Sign in</Link></p>
-              <button type="button">
-                <Link to="/signup">Sign up</Link>
-              </button>
+              {user ? (
+                <>
+                  <p>Hello, {user.user_name}</p>
+                  <button type="button" onClick={handleLogout}>Logout</button>
+                </>
+              ) : (
+                <>
+                  <p><Link to="/login">Sign in</Link></p>
+                  <button type="button">
+                    <Link to="/signup">Sign up</Link>
+                  </button>
+                </>
+              )}
             </div>
           </div>
         )}

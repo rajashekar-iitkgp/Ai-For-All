@@ -78,7 +78,7 @@
     justify-content: flex-end;
     align-items: flex-end;
     flex-direction: column;
-    
+
     text-align: end;
     background: var(--color-footer);
     padding: 2rem;
@@ -88,7 +88,7 @@
     margin-top: 1rem;
     min-width: 210px;
     border-radius: 5px;
-    box-shadow: 0px 0px 5px rgba(0,0, 0,0.2);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 .gpt3__navbar-menu_container p {
@@ -132,32 +132,88 @@
         display: block;
     }
 }
+
 .dropdown {
     position: relative;
     display: inline-block;
-  }
-  
-  .dropdown-content {
+    cursor: pointer;
+}
+
+.dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: black;
+    background: var(--color-footer);
+    min-width: 190px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    top: 100%;
+    left: 0;
+    overflow: hidden;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.dropdown-content a {
+    color: #fff;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-  }
-  
-  .dropdown-content a:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .dropdown:hover .dropdown-content {
+    font-family: var(--font-family);
+    font-size: 14px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--color-blog);
+    color: #fff;
+}
+
+.dropdown:hover .dropdown-content {
     display: block;
-  }
-  
+}
+
+@keyframes fadeIn {
+    from {
+        opacify: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.gpt3__navbar-user {
+    display: flex;
+    align-items: center;
+}
+
+.gpt3__navbar-user p {
+    color: #fff;
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 1rem;
+    text-transform: capitalize;
+}
+
+.gpt3__navbar-user button {
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background: transparent;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    border: 1px solid #FF4820;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.gpt3__navbar-user button:hover {
+    background: #FF4820;
+}
+
