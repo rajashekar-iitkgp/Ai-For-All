@@ -2,6 +2,7 @@ const router = require('express').Router();
 const pool = require('../db');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const authorization = require('../middleware/authorization');
 
 // Register
 router.post('/register', async (req, res) => {
@@ -58,6 +59,53 @@ router.post('/login', async (req, res) => {
 
         res.json({ token, user: user.rows[0] });
 
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// Update User
+router.put('/update', authorization, async (req, res) => {
+    try {
+        const { name, email, password } = req.body;
+        const userId = req.user; // from authorization middleware
+
+        let updateQuery = 'UPDATE users SET user_name = $1, user_email = $2';
+        let queryParams = [name, email];
+        let paramCounter = 3;
+
+        // If password is provided, hash it and add to query
+        if (password && password.trim() !== "") {
+            const saltRound = 10;
+            const salt = await bcrypt.genSalt(saltRound);
+            const bcryptPassword = await bcrypt.hash(password, salt);
+            updateQuery += `, user_password = $${paramCounter}`;
+            queryParams.push(bcryptPassword);
+            paramCounter++;
+        }
+
+        updateQuery += ` WHERE user_id = $${paramCounter} RETURNING *`;
+        queryParams.push(userId);
+
+        const updatedUser = await pool.query(updateQuery, queryParams);
+
+        if (updatedUser.rows.length === 0) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.json(updatedUser.rows[0]);
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// Verify Token
+router.get('/verify', authorization, async (req, res) => {
+    try {
+        res.json(true);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');

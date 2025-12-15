@@ -59,7 +59,7 @@ const Navbar = () => {
       <div className="gpt3__navbar-sign">
         {user ? (
           <div className="gpt3__navbar-user">
-            <p>Hello, {user.user_name || 'User'}</p>
+            <p><Link to="/profile">Hello, {user.user_name || 'User'}</Link></p>
             <button type="button" onClick={handleLogout}>Logout</button>
           </div>
         ) : (
@@ -89,7 +89,7 @@ const Navbar = () => {
             <div className="gpt3__navbar-menu_container-links-sign">
               {user ? (
                 <>
-                  <p>Hello, {user.user_name}</p>
+                  <p><Link to="/profile">Hello, {user.user_name}</Link></p>
                   <button type="button" onClick={handleLogout}>Logout</button>
                 </>
               ) : (

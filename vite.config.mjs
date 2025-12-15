@@ -6,6 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/auth': 'http://localhost:5000',
+      '/chat': 'http://localhost:5000',
     },
   },
   plugins: [

@@ -7,19 +7,37 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        const storedUser = localStorage.getItem('user');
+        const checkLoggedIn = async () => {
+            const token = localStorage.getItem('token');
+            const storedUser = localStorage.getItem('user');
 
-        if (token && storedUser) {
-            try {
-                setUser(JSON.parse(storedUser));
-            } catch (error) {
-                console.error("Failed to parse user data", error);
-                localStorage.removeItem('user');
-                localStorage.removeItem('token');
+            if (token && storedUser) {
+                try {
+                    const response = await fetch("/auth/verify", {
+                        method: "GET",
+                        headers: { token: token }
+                    });
+
+                    const parseRes = await response.json();
+
+                    if (parseRes === true) {
+                        setUser(JSON.parse(storedUser));
+                    } else {
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('user');
+                        setUser(null);
+                    }
+                } catch (error) {
+                    console.error("Verification failed", error);
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                    setUser(null);
+                }
             }
-        }
-        setLoading(false);
+            setLoading(false);
+        };
+
+        checkLoggedIn();
     }, []);
 
     const login = (token, userData) => {

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 import { Header, Blog, Features, Possibility, WhatGPT3, Footer } from './containers/index';
-import { CTA, Brand, Navbar, NotFound } from './components/index';
+import { CTA, Brand, Navbar, NotFound, Profile, Chatbot, Dashboard } from './components/index';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 
@@ -37,8 +37,11 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Chatbot />
       </div>
     </Router>
   );

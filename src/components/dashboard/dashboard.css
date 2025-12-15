@@ -1,0 +1,118 @@
+.dashboard-container {
+    padding: 4rem 6rem;
+    color: white;
+    min-height: 80vh;
+}
+
+.dashboard-header {
+    margin-bottom: 3rem;
+    animation: slideIn 0.5s ease-out;
+}
+
+.dashboard-header h1 {
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 42px;
+    letter-spacing: -0.04em;
+    margin-bottom: 1rem;
+}
+
+.dashboard-header p {
+    font-family: var(--font-family);
+    color: var(--color-text);
+    font-size: 18px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.dashboard-card {
+    background: var(--color-footer);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: #fca61f;
+    /* Orange accent from site theme */
+}
+
+.dashboard-card h3 {
+    font-family: var(--font-family);
+    font-size: 24px;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.dashboard-card p {
+    font-family: var(--font-family);
+    color: var(--color-text);
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-btn {
+    align-self: flex-start;
+    padding: 0.5rem 1.5rem;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    font-family: var(--font-family);
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.dashboard-card:hover .dashboard-btn {
+    background: white;
+    color: black;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .dashboard-container {
+        padding: 4rem 2rem;
+    }
+
+    .dashboard-header h1 {
+        font-size: 32px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-header h1 {
+        font-size: 28px;
+    }
+
+    .dashboard-header p {
+        font-size: 14px;
+    }
+}
