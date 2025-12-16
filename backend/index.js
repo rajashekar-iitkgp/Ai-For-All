@@ -12,6 +12,8 @@ app.use(express.json());
 // Routes
 app.use('/auth', require('./routes/auth'));
 app.use('/chat', require('./routes/chat'));
+app.use('/blogs', require('./routes/blogs'));
+app.use('/payments', require('./routes/payments'));
 
 const PORT = process.env.PORT || 5000;
 

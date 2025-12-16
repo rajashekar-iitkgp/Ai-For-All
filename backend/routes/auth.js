@@ -57,6 +57,10 @@ router.post('/login', async (req, res) => {
         // Generate JWT
         const token = jwt.sign({ user: user.rows[0].user_id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
+        // Send Email Notification (Async - don't wait for it)
+        const { sendLoginNotification } = require('../utils/emailService');
+        sendLoginNotification(user.rows[0].user_email, user.rows[0].user_name);
+
         res.json({ token, user: user.rows[0] });
 
     } catch (err) {
