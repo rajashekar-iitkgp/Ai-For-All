@@ -1,0 +1,76 @@
+.edit-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.edit-modal-content {
+    background: var(--color-footer);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.edit-modal-content h2 {
+    color: white;
+    font-family: var(--font-family);
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-family);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    background: #042c54;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: white;
+    font-family: var(--font-family);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.modal-actions button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-family: var(--font-family);
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+}
+
+.cancel-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid white !important;
+}
+
+.save-btn {
+    background: #FF4820;
+    color: white;
+}

@@ -7,6 +7,8 @@ export default defineConfig({
     proxy: {
       '/auth': 'http://localhost:5000',
       '/chat': 'http://localhost:5000',
+      '/blogs': 'http://localhost:5000',
+      '/payments': 'http://localhost:5000',
     },
   },
   plugins: [
